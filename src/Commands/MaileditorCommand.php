@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Flyzard\Maileditor\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class MaileditorCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'maileditor';
 
     public $description = 'My command';
 

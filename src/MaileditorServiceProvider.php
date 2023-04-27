@@ -2,9 +2,9 @@
 
 namespace Flyzard\Maileditor;
 
+use Flyzard\Maileditor\Commands\MaileditorCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Flyzard\Maileditor\Commands\MaileditorCommand;
 
 class MaileditorServiceProvider extends PackageServiceProvider
 {

@@ -4,7 +4,6 @@ namespace Flyzard\Maileditor\Http\Controllers;
 
 class MaileditorController extends Controller
 {
-
     public function index()
     {
         // get all emails
@@ -12,5 +11,4 @@ class MaileditorController extends Controller
 
         return view('maileditor::index');
     }
-
 }

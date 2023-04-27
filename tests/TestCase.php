@@ -2,9 +2,9 @@
 
 namespace Flyzard\Maileditor\Tests;
 
+use Flyzard\Maileditor\MaileditorServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Flyzard\Maileditor\MaileditorServiceProvider;
 
 class TestCase extends Orchestra
 {

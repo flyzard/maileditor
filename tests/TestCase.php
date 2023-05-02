@@ -5,6 +5,7 @@ namespace Flyzard\Maileditor\Tests;
 use Flyzard\Maileditor\MaileditorServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Illuminate\Support\Facades\Route;
 
 class TestCase extends Orchestra
 {
@@ -15,6 +16,8 @@ class TestCase extends Orchestra
         Factory::guessFactoryNamesUsing(
             fn (string $modelName) => 'Flyzard\\Maileditor\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
+
+        Route::maileditor();
     }
 
     protected function getPackageProviders($app)

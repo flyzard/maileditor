@@ -26,9 +26,9 @@ class MaileditorServiceProvider extends PackageServiceProvider
 
         Route::macro(
             'maileditor', function (string $baseUrl = 'maileditor') {
-                Route::prefix($baseUrl)->group(function () {
-                    Route::get('/', [MaileditorController::class, 'index'])->name('maileditor.index');
-                });
+            Route::prefix($baseUrl)->group(function () {
+                Route::get('/', [MaileditorController::class, 'index'])->name('maileditor.index');
             });
+        });
     }
 }

@@ -46,7 +46,7 @@ php artisan vendor:publish --tag="maileditor-views"
 
 ```php
 $maileditor = new Flyzard\Maileditor();
-echo $maileditor->echoPhrase('Hello, Flyzard!');
+// echo $maileditor->echoPhrase('Hello, Flyzard!');
 ```
 
 ## Testing

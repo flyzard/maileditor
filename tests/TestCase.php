@@ -4,8 +4,8 @@ namespace Flyzard\Maileditor\Tests;
 
 use Flyzard\Maileditor\MaileditorServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Illuminate\Support\Facades\Route;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {

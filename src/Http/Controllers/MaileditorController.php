@@ -1,6 +1,7 @@
 <?php
 
 namespace Flyzard\Maileditor\Http\Controllers;
+use Inertia\Inertia;
 
 class MaileditorController extends Controller
 {
@@ -9,6 +10,6 @@ class MaileditorController extends Controller
         // get all emails
         // $emails = \Flyzard\Maileditor\Models\Email::all();
 
-        return view('maileditor::index');
+        return Inertia::render('Home');
     }
 }

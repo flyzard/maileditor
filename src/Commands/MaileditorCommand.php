@@ -6,28 +6,31 @@ use Illuminate\Console\Command;
 
 class MaileditorCommand extends Command
 {
-    public $signature = 'maileditor:install';
+    protected $signature = 'maileditor:install';
 
-    public $description = 'Install teh Maileditor package';
+    protected $description = 'Install teh Maileditor package';
+
     public function handle(): int
     {
         // Get base path of the laravel project
         $basePath = base_path();
-        $targetDir = $basePath . '/public/vendor/flyzard/';
+        $targetDir = $basePath.'/public/vendor/flyzard/';
 
-        if (!is_dir($targetDir)) {
+        if (! is_dir($targetDir)) {
             mkdir($targetDir, 0777, true);
         }
 
-        $source = $basePath . '/vendor/flyzard/maileditor/public/build';
-        $target = $targetDir . 'maileditor';
+        $source = $basePath.'/vendor/flyzard/maileditor/public/build';
+        $target = $targetDir.'maileditor';
 
         if (symlink($source, $target)) {
-            $this->info(PHP_EOL . 'Symbolic link created successfully.' . PHP_EOL);
+            $this->info(PHP_EOL.'Symbolic link created successfully.'.PHP_EOL);
+
             return self::SUCCESS;
         }
 
-        $this->error(PHP_EOL . 'Symbolic link failed.' . PHP_EOL);
+        $this->error(PHP_EOL.'Symbolic link failed.'.PHP_EOL);
+
         return self::FAILURE;
     }
 }

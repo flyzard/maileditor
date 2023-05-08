@@ -1,6 +1,7 @@
 <?php
 
 namespace Flyzard\Maileditor\Http\Controllers;
+
 use Inertia\Inertia;
 
 class MaileditorController extends Controller

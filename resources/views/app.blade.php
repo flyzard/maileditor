@@ -13,7 +13,7 @@
     {{-- TODO: Remove the script and links before deployment --}}
     @inertiaHead
   </head>
-  <body>
+  <body class="antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900">
     @inertia
 
     @verbatim

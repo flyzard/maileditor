@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Flyzard\Maileditor\Facades;
 
 use Illuminate\Support\Facades\Facade;

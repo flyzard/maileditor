@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Flyzard\Maileditor;
 
 use Flyzard\Maileditor\Commands\MaileditorCommand;
@@ -27,10 +29,10 @@ class MaileditorServiceProvider extends PackageServiceProvider
 
     public function packageRegistered(): void
     {
-        Route::macro('maileditor', function (string $baseUrl = 'maileditor') {
+        Route::macro('maileditor', function (string $baseUrl = 'maileditor'): void {
             Route::prefix($baseUrl)
                 ->middleware([HandleInertiaRequests::class])
-                ->group(function () {
+                ->group(function (): void {
                     Route::get('/', [MaileditorController::class, 'index'])->name('maileditor.index');
                 });
         });

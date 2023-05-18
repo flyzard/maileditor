@@ -10,7 +10,7 @@ class MaileditorCommand extends Command
 {
     protected $signature = 'maileditor:install';
 
-    protected $description = 'Install teh Maileditor package';
+    protected $description = 'Install Maileditor package';
 
     public function handle(): int
     {

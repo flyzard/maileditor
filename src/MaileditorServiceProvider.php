@@ -10,6 +10,7 @@ use Flyzard\Maileditor\Http\Middleware\HandleInertiaRequests;
 use Illuminate\Support\Facades\Route;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Inertia\ServiceProvider as InertiaServiceProvider;
 
 class MaileditorServiceProvider extends PackageServiceProvider
 {
@@ -34,12 +35,36 @@ class MaileditorServiceProvider extends PackageServiceProvider
 
     public function packageRegistered(): void
     {
+        $this->setupForTests();
+
         Route::macro('maileditor', function (string $baseUrl = 'maileditor'): void {
             Route::prefix($baseUrl)
-                ->middleware([HandleInertiaRequests::class])
+                ->middleware([HandleInertiaRequests::class, 'web'])
                 ->group(function (): void {
                     Route::get('/', [MaileditorController::class, 'index'])->name('maileditor.index');
                 });
         });
+    }
+
+    protected function setupForTests(): void
+    {
+        if (env('APP_ENV') === 'testing') {
+            config()->set('inertia.testing.page_paths', [
+                __DIR__.'/../resources/js/Pages/',
+            ]);
+            config()->set('inertia.testing.page_extensions', [
+                'vue',
+                'js',
+                'jsx',
+                'ts',
+                'tsx',
+                'html',
+                'svelte',
+                'blade.php',
+            ]);
+
+            
+            (new InertiaServiceProvider($this->app))->register();
+        }
     }
 }

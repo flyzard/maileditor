@@ -17,6 +17,11 @@ class MaileditorServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('maileditor')
+            ->hasMigrations([
+                'maileditor_create_envelopes_table',
+                'maileditor_create_mail_templates_table'
+            ])
+            ->runsMigrations(true)
             ->hasCommand(MaileditorCommand::class);
     }
 

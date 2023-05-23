@@ -13,6 +13,8 @@ class MaileditorController extends Controller
         // get all emails
         // $emails = \Flyzard\Maileditor\Models\Email::all();
 
+        // Find all emails on the application
+
         return Inertia::render('Home');
     }
 }

@@ -5,8 +5,9 @@
             "name": "Listen for Xdebug",
             "type": "php",
             "request": "launch",
-            "port": 9003,
-            "idekey": "VSCODE"
+            "idekey": "VSCODE",
+            "port": 9006,
+            "runtimeExecutable": "/usr/local/bin/php"
         }
     ]
 }

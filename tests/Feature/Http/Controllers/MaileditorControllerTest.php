@@ -19,7 +19,7 @@ class MailEditorTest extends TestCase
         $response = $this->get(route('maileditor.index'));
 
         $response->assertInertia(
-            fn(AssertableInertia $page) => $page->component('Home')
+            fn (AssertableInertia $page) => $page->component('Home')
         );
     }
 }

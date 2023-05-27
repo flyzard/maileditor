@@ -19,7 +19,7 @@ return new class extends Migration
             $table->json('cc')->default(new Expression('(JSON_ARRAY())'));
             $table->json('bcc')->default(new Expression('(JSON_ARRAY())'));
             $table->json('reply_to')->default(new Expression('(JSON_ARRAY())'));
-            
+
             $table->softDeletes();
             $table->timestamps();
         });

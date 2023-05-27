@@ -11,10 +11,9 @@ use Flyzard\Maileditor\Http\Middleware\HandleInertiaRequests;
 use Flyzard\Maileditor\Models\MailTemplate;
 use Flyzard\Maileditor\Observers\MailTemplateObserver;
 use Illuminate\Support\Facades\Route;
+use Inertia\ServiceProvider as InertiaServiceProvider;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Inertia\ServiceProvider as InertiaServiceProvider;
-use Tightenco\Ziggy\ZiggyServiceProvider;
 
 class MaileditorServiceProvider extends PackageServiceProvider
 {
@@ -24,7 +23,7 @@ class MaileditorServiceProvider extends PackageServiceProvider
             ->name('maileditor')
             ->hasMigrations([
                 'maileditor_create_envelopes_table',
-                'maileditor_create_mail_templates_table'
+                'maileditor_create_mail_templates_table',
             ])
             ->runsMigrations(true)
             ->hasCommand(MaileditorCommand::class);
@@ -54,8 +53,8 @@ class MaileditorServiceProvider extends PackageServiceProvider
                 ->middleware([HandleInertiaRequests::class, 'web'])
                 ->group(function () use ($baseUrl): void {
                     Route::resource('/envelope', EnvelopeController::class, ['as' => 'maileditor']);
-                    Route::resource('/' , MaileditorController::class, [
-                        'as' => $baseUrl, 
+                    Route::resource('/', MaileditorController::class, [
+                        'as' => $baseUrl,
                         'parameters' => ['' => 'mailTemplate:slug'],
                         'names' => [
                             'index' => 'maileditor.index',
@@ -64,8 +63,8 @@ class MaileditorServiceProvider extends PackageServiceProvider
                             'show' => 'maileditor.show',
                             'edit' => 'maileditor.edit',
                             'update' => 'maileditor.update',
-                            'destroy' => 'maileditor.destroy'
-                        ]
+                            'destroy' => 'maileditor.destroy',
+                        ],
                     ]);
                 });
         });
@@ -88,7 +87,6 @@ class MaileditorServiceProvider extends PackageServiceProvider
                 'blade.php',
             ]);
 
-            
             (new InertiaServiceProvider($this->app))->register();
         }
     }

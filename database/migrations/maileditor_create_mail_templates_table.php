@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('slug');
             $table->longText('content');
-            $table->json('request')->default(new Expression('(JSON_ARRAY())'));;
+            $table->json('request')->default(new Expression('(JSON_ARRAY())'));
             $table->foreignId('envelope_id')->nullable()->constrained('maileditor_envelopes');
             $table->softDeletes();
             $table->timestamps();

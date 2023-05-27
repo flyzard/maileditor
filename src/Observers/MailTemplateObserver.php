@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Flyzard\Maileditor\Observers;
 
-use Illuminate\Support\Str;
 use Flyzard\Maileditor\Models\MailTemplate;
 
 class MailTemplateObserver
@@ -16,7 +15,7 @@ class MailTemplateObserver
 
     public function updated(MailTemplate $mailTemplate): void
     {
-        
+
     }
 
     public function deleted(MailTemplate $mailTemplate): void

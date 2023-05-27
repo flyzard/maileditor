@@ -10,9 +10,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class EnvelopeFactory extends Factory
 {
-
     protected $model = Envelope::class;
-    
+
     /**
      * Define the model's default state.
      *

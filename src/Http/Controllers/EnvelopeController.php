@@ -26,4 +26,3 @@ class EnvelopeController extends Controller
         return to_route('maileditor.index');
     }
 }
- 

@@ -5,7 +5,6 @@ use Flyzard\Maileditor\Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Inertia\Testing\AssertableInertia;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class EnvelopeControllerTest extends TestCase
 {
@@ -22,7 +21,7 @@ class EnvelopeControllerTest extends TestCase
         $originalEnvelope = Envelope::factory()->make();
 
         $response = $this->post(
-            route('maileditor.envelope.store'), 
+            route('maileditor.envelope.store'),
             $originalEnvelope->toArray()
         );
 

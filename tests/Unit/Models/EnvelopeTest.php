@@ -1,10 +1,10 @@
 <?php
 
+use Flyzard\Maileditor\Models\Envelope;
+use Flyzard\Maileditor\Models\MailTemplate;
+use Flyzard\Maileditor\Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Flyzard\Maileditor\Tests\TestCase;
-use Flyzard\Maileditor\Models\MailTemplate;
-use Flyzard\Maileditor\Models\Envelope;
 
 class EnvelopeTest extends TestCase
 {

@@ -27,7 +27,7 @@ class MailTemplateRequest extends FormRequest
             // 'request' => 'required|array',
             // 'request.name' => 'required|string',
             // 'request.email' => 'required|string',
-            'envelope_id' => 'required|exists:maileditor_envelopes,id'
+            'envelope_id' => 'required|exists:maileditor_envelopes,id',
         ];
     }
 }

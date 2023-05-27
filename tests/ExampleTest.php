@@ -14,5 +14,5 @@ class ExampleTest extends TestCase
     public function it_()
     {
         $this->assertTrue(true);
-    }    
+    }
 }

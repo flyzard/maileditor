@@ -12,6 +12,8 @@ return new class extends Migration
         Schema::create('maileditor_envelopes', function (Blueprint $table) {
             $table->id();
             $table->string('type');
+            $table->string('identifier')->unique()->nullable();
+            $table->string('subject');
             $table->json('from')->default(new Expression('(JSON_ARRAY())'));
             $table->json('to')->default(new Expression('(JSON_ARRAY())'));
             $table->json('cc')->default(new Expression('(JSON_ARRAY())'));

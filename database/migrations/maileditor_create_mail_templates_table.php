@@ -15,12 +15,10 @@ return new class extends Migration
         Schema::create('maileditor_mail_templates', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('subject');
             $table->string('slug');
             $table->longText('content');
             $table->json('request')->default(new Expression('(JSON_ARRAY())'));;
             $table->foreignId('envelope_id')->nullable()->constrained('maileditor_envelopes');
-
             $table->softDeletes();
             $table->timestamps();
         });

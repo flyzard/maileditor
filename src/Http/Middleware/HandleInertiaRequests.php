@@ -28,6 +28,7 @@ class HandleInertiaRequests extends Middleware
                         'toast' => $request->session()->get('toast'),
                     ];
                 },
+                'optedUri' => request()->segment(1),
             ]
         );
     }

@@ -5,12 +5,16 @@ declare(strict_types=1);
 namespace Flyzard\Maileditor;
 
 use Flyzard\Maileditor\Commands\MaileditorCommand;
+use Flyzard\Maileditor\Http\Controllers\EnvelopeController;
 use Flyzard\Maileditor\Http\Controllers\MaileditorController;
 use Flyzard\Maileditor\Http\Middleware\HandleInertiaRequests;
+use Flyzard\Maileditor\Models\MailTemplate;
+use Flyzard\Maileditor\Observers\MailTemplateObserver;
 use Illuminate\Support\Facades\Route;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Inertia\ServiceProvider as InertiaServiceProvider;
+use Tightenco\Ziggy\ZiggyServiceProvider;
 
 class MaileditorServiceProvider extends PackageServiceProvider
 {
@@ -26,9 +30,17 @@ class MaileditorServiceProvider extends PackageServiceProvider
             ->hasCommand(MaileditorCommand::class);
     }
 
+    public function registeringPackage(): void
+    {
+        $this->app->register(InertiaServiceProvider::class);
+    }
+
     public function boot(): void
     {
         parent::boot();
+
+        // Observe changes to the MailTemplate model for various effects, like creating slug or notifying owners
+        MailTemplate::observe(MailTemplateObserver::class);
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'maileditor');
     }
@@ -40,8 +52,21 @@ class MaileditorServiceProvider extends PackageServiceProvider
         Route::macro('maileditor', function (string $baseUrl = 'maileditor'): void {
             Route::prefix($baseUrl)
                 ->middleware([HandleInertiaRequests::class, 'web'])
-                ->group(function (): void {
-                    Route::get('/', [MaileditorController::class, 'index'])->name('maileditor.index');
+                ->group(function () use ($baseUrl): void {
+                    Route::resource('/envelope', EnvelopeController::class, ['as' => 'maileditor']);
+                    Route::resource('/' , MaileditorController::class, [
+                        'as' => $baseUrl, 
+                        'parameters' => ['' => 'mailTemplate:slug'],
+                        'names' => [
+                            'index' => 'maileditor.index',
+                            'create' => 'maileditor.create',
+                            'store' => 'maileditor.store',
+                            'show' => 'maileditor.show',
+                            'edit' => 'maileditor.edit',
+                            'update' => 'maileditor.update',
+                            'destroy' => 'maileditor.destroy'
+                        ]
+                    ]);
                 });
         });
     }

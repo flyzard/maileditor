@@ -1,7 +1,8 @@
 <script context="module">
-    import Main from "../Layouts/Main.svelte";
+    import Explorer from "@/Layouts/Explorer.svelte";
     import { writable } from "svelte/store";
-    export const layout = Main;
+
+    export const layout = Explorer;
     export const title = writable(null);
 </script>
 
@@ -16,9 +17,14 @@
 </svelte:head>
 
 <div class="flex flex-col flex-1 bg-gray-900">
-    <div class="text-black flex-1 flex justify-center bg-[#090816]">
-        <iframe class="w-full h-full bg-white max-w-md" sandbox="" fetchpriority="high" loading="eager" src="http://notifications.test/mailbook/content?class=App%5CMail%5CNewBooking&amp;locale=en"/>
+
+    <div class="flex items-center justify-center h-screen">
+        Select a template or create a new one
     </div>
+    
+    <!-- <div class="text-black flex-1 flex justify-center bg-[#090816]">
+        <iframe class="w-full h-full bg-white max-w-md" sandbox="" fetchpriority="high" loading="eager" src="http://notifications.test/mailbook/content?class=App%5CMail%5CNewBooking&amp;locale=en"/>
+    </div> -->
 </div>
 <div class="flex-col justify-between gap-2 w-[300px] overflow-y-auto overflow-x-hidden hidden xl:flex">
     <div class="flex flex-col p-4 divide-y divide-gray-500">

@@ -1,19 +1,25 @@
-<?php 
+<?php
 
-use Flyzard\Maileditor\Http\Controllers\MaileditorController;
+use Flyzard\Maileditor\Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Inertia\Testing\AssertableInertia;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use function Pest\Laravel\get;
-use function Pest\Laravel\post;
 
-beforeEach(function () {
-    $this->withoutExceptionHandling();
-});
+class MailEditorTest extends TestCase
+{
+    use RefreshDatabase;
 
-it('can render the mail editor component', function () {
-    $response = get(route('maileditor.index'));
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->withoutExceptionHandling();
+    }
 
-    $response->assertInertia(
-        fn(AssertableInertia $page) => $page->component('Home')
-    );
-});
+    public function test_can_render_the_mail_editor_component()
+    {
+        $response = $this->get(route('maileditor.index'));
+
+        $response->assertInertia(
+            fn(AssertableInertia $page) => $page->component('Home')
+        );
+    }
+}

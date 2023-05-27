@@ -13,6 +13,8 @@ class Envelope extends Model
 
     protected $fillable = [
         'type',
+        'indentifier',
+        'subject',
         'from',
         'to',
         'cc',
@@ -28,8 +30,18 @@ class Envelope extends Model
         'reply_to' => 'array',
     ];
 
-    public function mailTemplates()
+    public function mailTemplates(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(MailTemplate::class);
+        return $this->hasMany(\Flyzard\Maileditor\Models\MailTemplate::class);
+    }
+
+    public function equals(Envelope $envelope): bool
+    {
+        return $this->type == $envelope->type
+            && $this->from == $envelope->from
+            && $this->to == $envelope->to
+            && $this->cc == $envelope->cc
+            && $this->bcc == $envelope->bcc
+            && $this->reply_to == $envelope->reply_to;
     }
 }
